@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Twilio Verify Example</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+		body {
+			padding: 20px;
+		}
+
+		form {
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h2 class="mt-3">Twilio Verify Example</h2>
+
+		<form id="sendCodeForm" class="form-inline">
+			<div class="form-group mr-2">
+				<label for="countryCode" class="sr-only">Country Code:</label>
+				<select id="countryCode" name="countryCode" class="form-control">
+					<!-- Add country codes as needed -->
+					<option value="+1">+1 (US)</option>
+					<option value="+44">+44 (UK)</option>
+					<!-- Add more options as needed -->
+				</select>
+			</div>
+			<div class="form-group mr-2">
+				<label for="phoneNumber" class="sr-only">Phone Number:</label>
+				<input type="tel" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="Enter phone number"
+					required>
+			</div>
+		</form>
+
+		<div>
+		<button type="button" onclick="checkNumber()" class="btn btn-secondary">Check Number Type</button>
+		</div>
+			<br />
+
+		<div>
+			<button type="button" onclick="sendCode()" class="btn btn-primary">Send Verification Code</button>
+		</div>
+
+		<hr>
+
+		<form id="verifyCodeForm" class="form-inline">
+			<div class="form-group mr-2">
+				<label for="verificationCode" class="sr-only">Verification Code:</label>
+				<input type="text" id="verificationCode" name="verificationCode" class="form-control"
+					placeholder="Enter verification code" required>
+			</div>
+			<button type="button" onclick="verifyCode()" class="btn btn-success">Verify Code</button>
+		</form>
+
+	<script>
+		async function checkNumber() {
+			const countryCode = document.getElementById('countryCode').value;
+			const phoneNumber = document.getElementById('phoneNumber').value;
+
+			try {
+				const response = await fetch('/check-number', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded',
+					},
+					body: `countryCode=${encodeURIComponent(countryCode)}&phoneNumber=${phoneNumber}`,
+				});
+
+				const result = await response.text();
+				alert(result);
+			} catch (error) {
+				console.error(error);
+				alert('Error sending verification code.');
+			}
+		}
+
+		async function sendCode() {
+			const countryCode = document.getElementById('countryCode').value;
+			const phoneNumber = document.getElementById('phoneNumber').value;
+
+			try {
+				const response = await fetch('/send-code', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded',
+					},
+					body: `countryCode=${encodeURIComponent(countryCode)}&phoneNumber=${phoneNumber}`,
+				});
+
+				const result = await response.text();
+				alert(result);
+			} catch (error) {
+				console.error(error);
+				alert('Error sending verification code.');
+			}
+		}
+
+		async function verifyCode() {
+			const countryCode = document.getElementById('countryCode').value;
+			const phoneNumber = document.getElementById('phoneNumber').value;
+			const verificationCode = document.getElementById('verificationCode').value;
+
+			try {
+				const response = await fetch('/verify-code', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded',
+					},
+					body: `countryCode=${encodeURIComponent(countryCode)}&phoneNumber=${phoneNumber}&code=${verificationCode}`,
+				});
+
+				const result = await response.text();
+				alert(result);
+			} catch (error) {
+				console.error(error);
+				alert('Error verifying code.');
+			}
+		}
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

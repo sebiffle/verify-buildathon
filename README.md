@@ -1,2 +1,2 @@
-# verify-buildathon
-Repo for the SMS OTP -> Verify Buildathon! 
+# sms-otp-to-verify
+ 
