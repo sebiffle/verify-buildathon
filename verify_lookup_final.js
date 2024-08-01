@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 // Twilio credentials
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
-const verifySID = 'VAca3c5c8e2c411ef5a62a63d2d498ac84';
+const verifySID = 'VAXXXXXXXXXXX';
 
 const client = new twilio(accountSid, authToken);
 
