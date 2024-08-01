@@ -10,7 +10,7 @@ Before you begin, ensure you have the following:
 ## This Application:
 - Please clone this project is a basic HTML/CSS/JS application. It allows a visitor to input their phone number and verify an OTP sent to them using Twilio.
 
-##Setup
+## Setup
 If you installed git you can clone the code to your machine, or download a ZIP of all the files directly.
 
 Download the ZIP from this location, or run the following git command to clone the files to your machine:
@@ -22,7 +22,7 @@ git clone https://github.com/sebiffle/verify-buildathon.git
 - sms_original.js is the version of the project we'll be starting with in twofactor.js. This file has the application setup to create and send an OTP over Twilio Programmable Messaging and to check the user input code within the application.
 - verify_lookup_final.js is the version of the project we'll end with in twofactor.js. This file has the application setup to leverage Twilio Verify to send an OTP and to check the user input code through leveraging Verify.
 
-##Resources within the presentation
+## Resources within the presentation
 - [Twilio Verify](https://www.twilio.com/docs/verify/api)
   - [Send OTP](https://www.twilio.com/docs/verify/api/verification#start-new-verification)
   - [Check OTP](https://www.twilio.com/docs/verify/api/verification-check)
@@ -30,4 +30,4 @@ git clone https://github.com/sebiffle/verify-buildathon.git
   - [Line Type Intelligence](https://www.twilio.com/docs/lookup/v2-api/line-type-intelligence)
 
 
-#Thank you so much, we cannot wait to see what you build!
+# Thank you so much, we cannot wait to see what you build!
