@@ -12,8 +12,7 @@ const port = process.env.PORT || 3000;
 // Twilio credentials
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
-const twilioPhoneNumber = "+17206374104";
-const twilioTFPhoneNumber = "+18449710301";
+const twilioPhoneNumber = "+1XXX-XXX-XXXX";
 
 const client = new twilio(accountSid, authToken);
 
