@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const twilio = require('twilio');
 const path = require('path');
+const { log } = require('console');
 
 //use environment variables
 require('dotenv').config();
@@ -12,9 +13,10 @@ const port = process.env.PORT || 3000;
 // Twilio credentials
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
-const verifySID = 'VAXXXXXXXXXXX';
+const verifySID = 'VAXXXXXXX';
 
 const client = new twilio(accountSid, authToken);
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -23,7 +25,7 @@ app.get('/', (req, res) =>{
 	res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Endpoint to initiate the 2FA process
+// Endpoint to Check Number Type
 app.post('/check-number', async (req, res) => {
 	const countryCode = req.body.countryCode;
   const phoneNumber = req.body.phoneNumber;
@@ -36,7 +38,8 @@ app.post('/check-number', async (req, res) => {
     const checkNumber = await client.lookups.v2.phoneNumbers(`${countryCode}${phoneNumber}`)
     .fetch({fields: 'line_type_intelligence'})
     .then(phone_number => console.log(phone_number.lineTypeIntelligence))
-    res.send('Number was successfully checked.');
+
+    res.send('Number checked successfully.');
   } catch (error) {
     console.error(error);
     res.status(500).send('Error checking number.');
