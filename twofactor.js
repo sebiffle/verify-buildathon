@@ -12,17 +12,10 @@ const port = process.env.PORT || 3000;
 // Twilio credentials
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
-const twilioPhoneNumber = "+1XXX-XXX-XXXX";
+const verifySID ='VA8785ede80a8da74e2633a2ef737dea4f';
 
 const client = new twilio(accountSid, authToken);
 
-// Generate a random 6-digit code
-function generateCode() {
-  return Math.floor(100000 + Math.random() * 900000);
-}
-
-// Store the generated codes (in-memory storage for demo purposes ONLY)
-const codes = {};
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -35,20 +28,20 @@ app.get('/', (req, res) =>{
 app.post('/send-code', async (req, res) => {
 	const countryCode = req.body.countryCode;
   const phoneNumber = req.body.phoneNumber;
-
+	console.log(req.body)
   if (!countryCode || !phoneNumber) {
     return res.status(400).send('Country code and phone number are required.');
   }
 
-  const code = generateCode();
-  codes[phoneNumber] = code;
-
   try {
-    await client.messages.create({
-      body: `Your verification code is: ${code}`,
-      from: twilioPhoneNumber,
-      to: `${countryCode}${phoneNumber}`,
+    const checkResp = await client.verify.v2
+    .services('VA8785ede80a8da74e2633a2ef737dea4f')
+    .verifications.create({
+      channel: 'sms',
+      to: '+19703897747',
     });
+    console.log('checkResp', checkResp);
+
     res.send('Verification code sent successfully.');
   } catch (error) {
     console.error(error);
