@@ -23,8 +23,8 @@ Download the ZIP from this location, or run the following git command to clone t
 git clone https://github.com/sebiffle/verify-buildathon.git
 
 - Once you've cloned the repository, open the application and create a .env file within the folder structure for your Account SID and Auth Token. Format: 
-        - TWILIO_ACCOUNT_SID = "ACXXXXXXXX"
-        - TWILIO_AUTH_TOKEN = "XXXXXXXXXX"
+    - TWILIO_ACCOUNT_SID = "ACXXXXXXXX"
+    - TWILIO_AUTH_TOKEN = "XXXXXXXXXX"
 - Then, open the twofactor.js file
 - You can run this application through the following command: node twofactor.js
 - You will need to provide an Account SID and Auth Token to complete this build. Don't know where those are? Check out your [API Credentials Here](https://www.twilio.com/docs/iam/credentials/api)
