@@ -37,5 +37,18 @@ git clone https://github.com/sebiffle/verify-buildathon.git
 - [Twilio Lookup](https://www.twilio.com/docs/lookup)
     - [Line Type Intelligence](https://www.twilio.com/docs/lookup/v2-api/line-type-intelligence)
 
+## Twilio Verify and Lookup Docs!
+- [Twilio Verify](https://www.twilio.com/docs/verify/api)
+    - [Channels](https://www.twilio.com/docs/verify/authentication-channels), [Best Practices](https://www.twilio.com/docs/verify/developer-best-practices), [Quickstarts](https://www.twilio.com/docs/verify/quickstarts) 
+    - [Prevent Fraud](https://www.twilio.com/docs/verify/preventing-toll-fraud)
+    - [Events Stream](https://www.twilio.com/docs/verify/verify-events) 
+- [Twilio Lookup](https://www.twilio.com/docs/lookup)
+    - [Reassigned Number](https://www.twilio.com/docs/lookup/v2-api/reassigned-number)
+    - [SIM Swap](https://www.twilio.com/docs/lookup/v2-api/sim-swap)
+    - [SMS Pumping Risk](https://www.twilio.com/docs/lookup/v2-api/sms-pumping-risk)
+    - [Call Forwarding](https://www.twilio.com/docs/lookup/v2-api/call-forwarding)
+    - [Caller Name](https://www.twilio.com/docs/lookup/v2-api/caller-name)
+    - [Identity Match](https://www.twilio.com/docs/lookup/v2-api/identity-match)
+
 
 ## Thank you so much, we cannot wait to see what you build!
